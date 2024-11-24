@@ -26,17 +26,22 @@ app.use(express.json());
 
 // MySQL connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'anubroker'
+  host: process.env.DB_HOST,        // Host from environment variables
+  user: process.env.DB_USER,        // User from environment variables
+  password: process.env.DB_PASS,    // Password from environment variables
+  database: process.env.DB_NAME,    // Database name from environment variables
+  port: process.env.DB_PORT || 3306 // Default MySQL port
 });
 
 // Connect to MySQL
 db.connect(err => {
-  if (err) throw err;
-  console.log('Connected to MySQL');
+  if (err) {
+    console.error('Database connection failed:', err.stack);
+    return;
+  }
+  console.log('Connected to MySQL using environment variables');
 });
+
 
 app.use('/api/account-payable', accountPayableRoutes);
 
