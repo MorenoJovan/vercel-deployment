@@ -1015,6 +1015,12 @@ app.get('/api/ar-transactions', async (req, res) => {
   }
 });
 
+// Root route
+app.get('/', (req, res) => {
+  res.send('Server is running and ready to handle requests!');
+});
+
+
 // Start the server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
