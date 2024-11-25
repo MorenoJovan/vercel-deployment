@@ -4,10 +4,11 @@ const mysql = require('mysql2/promise'); // Use promise-based version
 
 // MySQL connection pool
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'anubroker'
+    host: 'b9o55q4qbdeclkpjf9vx-mysql.services.clever-cloud.com',
+    user: 'uxq4wjqviolhaii3',
+    password: '21PQZDnH7TolTE0Zd3zZ',
+    database: 'b9o55q4qbdeclkpjf9vx',
+    port: '3306'
 });
 
 // Endpoint to fetch sales data

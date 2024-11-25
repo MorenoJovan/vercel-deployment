@@ -4,10 +4,11 @@ const mysql = require('mysql2/promise');
 
 // MySQL connection
 const db = mysql.createPool({
-  host: 'localhost',
-  user: 'root', // Replace with your MySQL username
-  password: '', // Replace with your MySQL password
-  database: 'anubroker' // The database you want to use
+  host: 'b9o55q4qbdeclkpjf9vx-mysql.services.clever-cloud.com',
+  user: 'uxq4wjqviolhaii3',
+  password: '21PQZDnH7TolTE0Zd3zZ',
+  database: 'b9o55q4qbdeclkpjf9vx',
+  port: '3306'
 });
 
 // Convert date to string in 'YYYY-MM-DD' format before sending
