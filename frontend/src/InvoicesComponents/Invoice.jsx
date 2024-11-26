@@ -31,10 +31,10 @@ const Invoice = () => {
     // Fetch users and fish names from the backend
     const fetchData = async () => {
       try {
-        const usersResponse = await axios.get('http://localhost:8000/users');
+        const usersResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/users`);
         setUsers(usersResponse.data);
         
-        const fishResponse = await axios.get('http://localhost:8000/api/fishnames');
+        const fishResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/fishnames`);
         setFishNames(fishResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -89,7 +89,7 @@ const Invoice = () => {
 
     try {
       // Create or update invoice
-      const response = await axios.post('http://localhost:8000/invoices', {
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/invoices`, {
         userId: selectedUser,
         invoiceDate: currentDate,
         dueDate: '', // Set this as needed

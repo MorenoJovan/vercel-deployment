@@ -25,7 +25,7 @@ const UserAdd = () => {
     e.preventDefault();
     try {
       const { fullName, lastName, contact, username, password, role } = formData;
-      const response = await axios.post('http://localhost:8000/register', {
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/register`, {
         fullName,
         lastName,
         contact,

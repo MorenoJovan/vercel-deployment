@@ -18,7 +18,7 @@ const LoginForm = () => {
 
     try {
       const payload = { username, password, role };
-      const response = await axios.post('http://localhost:8000/api/login', payload);
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/login`, payload);
       console.log('Response:', response.data);
 
       if (response.status === 200) {

@@ -15,7 +15,7 @@ const Account_payable = () => {
 
   const fetchAccounts = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/account-payable');
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/account-payable`);
       setAccounts(response.data);
     } catch (err) {
       setError(err.message);
@@ -39,7 +39,7 @@ const Account_payable = () => {
 
   const handlePayment = async (accountId) => {
     try {
-      await axios.patch(`http://localhost:8000/api/account-payable/${accountId}`, { status: 'paid' });
+      await axios.patch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/account-payable/${accountId}`, { status: 'paid' });
       // Update the accounts state to reflect the change
       setAccounts((prevAccounts) =>
         prevAccounts.map((account) =>

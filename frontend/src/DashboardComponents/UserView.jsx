@@ -18,7 +18,7 @@ const UserView = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/users');
+        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/users`);
         setUsers(response.data);
       } catch (err) {
         setError('Failed to fetch users');
@@ -62,12 +62,12 @@ const UserView = () => {
         delete updateData.password;
       }
   
-      const response = await axios.put(`http://localhost:8000/users/${selectedUser.id}`, updateData);
+      const response = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/users/${selectedUser.id}`, updateData);
       alert('User updated successfully');
       setSelectedUser(null);
   
       // Optionally, refresh the user list after update
-      const userResponse = await axios.get('http://localhost:8000/users');
+      const userResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/users`);
       setUsers(userResponse.data);
     } catch (err) {
       console.error('Failed to update user', err.response ? err.response.data : err);
@@ -88,7 +88,7 @@ const handleDelete = async (id) => {
   try {
     console.log('Attempting to delete user with ID:', id); // Check if the ID is correct
 
-    const response = await axios.delete(`http://localhost:8000/users/${id}`);
+    const response = await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/users/${id}`);
     alert('User deleted successfully');
 
     // Refresh the user list after deletion

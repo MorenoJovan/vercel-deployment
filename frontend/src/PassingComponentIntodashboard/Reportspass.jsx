@@ -74,7 +74,7 @@ const TotalSupplier = () => {
 
   const fetchSuppliers = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/supplier/suppliers');
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/supplier/suppliers`);
       if (!response.ok) {
         throw new Error('Failed to fetch suppliers');
       }
@@ -123,7 +123,7 @@ const TotalUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/users'); // Adjust API endpoint as necessary
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/users`); // Adjust API endpoint as necessary
       const users = response.data;
       const admins = users.filter(user => user.role === 'admin');
       const clients = users.filter(user => user.role === 'client');
@@ -172,7 +172,7 @@ const TotalInvoices = () => {
 
   const fetchInvoices = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/invoices');
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/invoices`);
       const invoicesData = response.data;
 
       // Count only active invoices
@@ -217,7 +217,7 @@ const DeliveriesToday = () => {
 
   const fetchDeliveries = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/products'); // Adjust API endpoint as necessary
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/products`); // Adjust API endpoint as necessary
       const products = response.data;
 
       // Count today's deliveries
@@ -272,7 +272,7 @@ const Reportspass = () => {
   
     const fetchSummary = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/summaryreport?date=${summaryDate}`);
+        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/summaryreport?date=${summaryDate}`);
         setSummary(response.data);
         setError(null);
       } catch (err) {
@@ -283,7 +283,7 @@ const Reportspass = () => {
 
   const fetchTotals = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/salesreport?start_date=${summaryDate}&end_date=${endDate}`);
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/salesreport?start_date=${summaryDate}&end_date=${endDate}`);
       let totalCredits = 0;
       let totalDebits = 0;
       let totalOutstanding = 0;

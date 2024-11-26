@@ -22,7 +22,7 @@ const SalesTracking = () => {
 
     const fetchSalesData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/api/sales?start_date=${startDate}&end_date=${endDate}`);
+            const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/sales?start_date=${startDate}&end_date=${endDate}`);
             setSalesData(response.data);
 
             const totalCredits = response.data.reduce((sum, sale) => sum + parseFloat(sale.sale_total || 0), 0);

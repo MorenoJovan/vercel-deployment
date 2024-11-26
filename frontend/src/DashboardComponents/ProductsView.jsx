@@ -12,7 +12,7 @@ const ProductView = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/products');
+                const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/products`);
                 setProducts(response.data);
             } catch (error) {
                 setError('Failed to fetch products: ' + error.message);
@@ -37,9 +37,9 @@ const ProductView = () => {
         
         try {
             // Send a PUT request to update the product
-            await axios.put(`http://localhost:8000/api/products/${selectedProduct.product_id}`, selectedProduct);
+            await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/products/${selectedProduct.product_id}`, selectedProduct);
             // Refresh product list
-            const response = await axios.get('http://localhost:8000/api/products');
+            const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/products`);
             setProducts(response.data);
             handleCloseModal(); // Close modal after update
         } catch (error) {
@@ -96,7 +96,7 @@ const ProductView = () => {
                                             <td className="px-4 py-3">
                                                 {product.photo ? (
                                                      <img
-                                                     src={`http://localhost:8000/uploads/${product.photo}`} // Adjust URL as needed
+                                                     src={`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/uploads/${product.photo}`} // Adjust URL as needed
                                                      alt={product.product_name}
                                                      className="w-20 h-20 object-cover rounded-lg"
                                                  />

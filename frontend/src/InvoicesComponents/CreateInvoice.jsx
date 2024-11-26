@@ -28,8 +28,8 @@ const CreateInvoice = () => {
       setLoading(true);
       try {
         const [usersResponse, productsResponse] = await Promise.all([
-          axios.get('http://localhost:8000/users'),
-          axios.get('http://localhost:8000/api/products'), // Changed fishnames endpoint to products
+          axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/users`),
+          axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/products`), // Changed fishnames endpoint to products
         ]);
         setUsers(usersResponse.data);
         setProducts(productsResponse.data); // Maintain fetching products
@@ -58,7 +58,7 @@ const CreateInvoice = () => {
   const fetchPricePerKg = async (productId) => {
     try {
         // Fetch the specific product using its ID
-        const response = await axios.get(`http://localhost:8000/api/products/${productId}`);
+        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/products/${productId}`);
         
         // Check if the product was found and set the price
         if (response.data && response.data.current_price) {
@@ -157,7 +157,7 @@ const CreateInvoice = () => {
         };
 
         // Send invoice to backend
-        const invoiceResponse = await axios.post('http://localhost:8000/invoices', invoiceData);
+        const invoiceResponse = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/invoices`, invoiceData);
 
         const { invoiceIds } = invoiceResponse.data; // Ensure you access invoiceIds array
         if (!invoiceIds || !invoiceIds.length) {
@@ -212,7 +212,7 @@ const submitPayment = async (invoiceId, paymentAmount) => {
 
 
         // Send the payment to the backend
-        await axios.post('http://localhost:8000/submit-payment', paymentData);
+        await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/submit-payment`, paymentData);
 
         // Update frontend state
         setInitialPayment(prev => prev + paymentAmount);

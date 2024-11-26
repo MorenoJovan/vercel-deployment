@@ -25,10 +25,10 @@ const ManageInvoices = () => {
     const fetchData = async () => {
       try {
         const [invoicesResponse, usersResponse, productsResponse, arTransactionsResponse] = await Promise.all([
-          axios.get('http://localhost:8000/invoices'),
-          axios.get('http://localhost:8000/users'),
-          axios.get('http://localhost:8000/api/products'),
-          axios.get('http://localhost:8000/api/ar-transactions'),
+          axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/invoices`),
+          axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/users`),
+          axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/products`),
+          axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/ar-transactions`),
         ]);
 
         const invoicesData = invoicesResponse.data;
@@ -61,7 +61,7 @@ const ManageInvoices = () => {
         // Fetch transactions for each user
         const transactionsResponses = await Promise.all(
           Object.keys(usersData).map(userId =>
-            axios.get(`http://localhost:8000/api/transactions?userId=${userId}`)
+            axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/transactions?userId=${userId}`)
           )
         );
 
@@ -144,7 +144,7 @@ const ManageInvoices = () => {
     try {
         const transactionsResponses = await Promise.all(
             Object.keys(users).map(userId =>
-                axios.get(`http://localhost:8000/api/transactions?userId=${userId}`)
+                axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/transactions?userId=${userId}`)
             )
         );
 
@@ -185,13 +185,13 @@ const handleConfirmPayment = async (invoice) => {
     const updatedStatus = updatedPaidAmount >= invoice.total_amount ? 'Paid' : 'Pending';
 
     // Update the invoice
-    await axios.put(`http://localhost:8000/invoices/${invoice.id}`, {
+    await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/invoices/${invoice.id}`, {
       paid_amount: updatedPaidAmount,
       status: updatedStatus,
     });
 
     // Update the accounts_receivable
-    await axios.put(`http://localhost:8000/accounts_receivable/${invoice.id}`, {
+    await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/accounts_receivable/${invoice.id}`, {
       paid_amount: updatedPaidAmount,
       outstanding_balance: invoice.total_amount - updatedPaidAmount,
     });

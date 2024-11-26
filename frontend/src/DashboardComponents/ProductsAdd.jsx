@@ -17,14 +17,14 @@ const ProductsAdd = () => {
   const [success, setSuccess] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/categories')
+    axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/categories`)
       .then(response => setCategories(response.data))
       .catch(error => {
         console.error('Error fetching categories:', error);
         setError('Failed to load categories.');
       });
 
-    axios.get('http://localhost:8000/api/supplier/suppliers')
+    axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/supplier/suppliers`)
       .then(response => setSuppliers(response.data))
       .catch(error => {
         console.error('Error fetching suppliers:', error);
@@ -55,7 +55,7 @@ const ProductsAdd = () => {
     formData.append('supplier_id', selectedSupplier);
     if (image) formData.append('image', image);
 
-    axios.post('http://localhost:8000/api/products', formData)
+    axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/products`, formData)
       .then(response => {
         console.log(response.data);
         // Clear form fields on success

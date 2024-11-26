@@ -28,7 +28,7 @@ const ViewLedgers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const arResponse = await axios.get('http://localhost:8000/api/ar-transactions');
+        const arResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/ar-transactions`);
         setArData(arResponse.data);
         setLoading(false);
       } catch (error) {
@@ -43,7 +43,7 @@ const ViewLedgers = () => {
   useEffect(() => {
     const fetchTransactionsByInvoice = async (invoiceId) => {
       try {
-        const transactionsResponse = await axios.get(`http://localhost:8000/api/ar-transactions?invoiceId=${invoiceId}`);
+        const transactionsResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/ar-transactions?invoiceId=${invoiceId}`);
         setArTransactions(transactionsResponse.data);
       } catch (error) {
         setError(`Error fetching transactions: ${error.message}`);

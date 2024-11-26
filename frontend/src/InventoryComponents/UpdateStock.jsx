@@ -20,8 +20,8 @@ function StockManagementSystem() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const stockInResponse = await axios.get('http://localhost:8000/api/stockin');
-        const stockOutResponse = await axios.get('http://localhost:8000/api/stockout');
+        const stockInResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/stockin`);
+        const stockOutResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/stockout`);
 
         if (Array.isArray(stockInResponse.data) && Array.isArray(stockOutResponse.data)) {
           setStockIn(stockInResponse.data);

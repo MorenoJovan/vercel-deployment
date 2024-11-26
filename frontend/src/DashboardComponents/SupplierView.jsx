@@ -14,7 +14,7 @@ const SupplierView = () => {
 
   const fetchSuppliers = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/supplier/suppliers');
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/supplier/suppliers`);
       if (!response.ok) {
         throw new Error('Failed to fetch suppliers');
       }
@@ -34,7 +34,7 @@ const SupplierView = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this supplier?')) {
       try {
-        const response = await fetch(`http://localhost:8000/api/supplier/suppliers/${id}`, {
+        const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/supplier/suppliers/${id}`, {
           method: 'DELETE',
         });
         if (response.ok) {
@@ -62,7 +62,7 @@ const SupplierView = () => {
 
   const handleUpdate = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/api/supplier/suppliers/${editingSupplier}`, {
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/supplier/suppliers/${editingSupplier}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

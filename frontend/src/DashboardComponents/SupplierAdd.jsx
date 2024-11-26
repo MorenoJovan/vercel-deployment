@@ -18,7 +18,7 @@ const SupplierAdd = () => {
         e.preventDefault();
         
         try {
-            const response = await fetch('http://localhost:8000/api/supplier/suppliers', {
+            const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/supplier/suppliers`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

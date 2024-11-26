@@ -28,7 +28,7 @@ const AccountBalance = () => {
 
       try {
         const query = startDate && endDate ? `?start=${startDate.toISOString().split('T')[0]}&end=${endDate.toISOString().split('T')[0]}` : '';
-        const response = await axios.get(`http://localhost:8000/api/account-balance/extended/${userId}${query}`);
+        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/account-balance/extended/${userId}${query}`);
         setAccountData(response.data);
 
         // Calculate totals for Credit, Debit, and Balance
