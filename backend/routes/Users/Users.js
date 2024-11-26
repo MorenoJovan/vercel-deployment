@@ -6,10 +6,10 @@ const bcrypt = require('bcrypt');
 
 // MySQL connection pool
 const db = mysql.createPool({
-  host: 'b9o55q4qbdeclkpjf9vx-mysql.services.clever-cloud.com',
-  user: 'uxq4wjqviolhaii3',
-  password: '21PQZDnH7TolTE0Zd3zZ',
-  database: 'b9o55q4qbdeclkpjf9vx',
+  host: 'bsxtznqkqju8owmb791r-mysql.services.clever-cloud.com',
+  user: 'ulaakwd7dj2iw1lr',
+  password: 'BOu0vZSu6u6ZZPbvIe1d',
+  database: 'bsxtznqkqju8owmb791r',
   port: '3306'
 });
 
