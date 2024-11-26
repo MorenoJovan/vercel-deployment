@@ -21,7 +21,7 @@ const StockManagementSystem = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const stockInResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}:8000/api/products`);
+        const stockInResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/products`);
         const stockOutResponse = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/stockout`);
         
         setStockIn(stockInResponse.data);

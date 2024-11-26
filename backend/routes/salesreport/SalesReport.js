@@ -4,10 +4,10 @@ const mysql = require('mysql2/promise'); // Use promise-based version
 
 // MySQL connection pool
 const db = mysql.createPool({
-    host: 'bsxtznqkqju8owmb791r-mysql.services.clever-cloud.com',
-    user: 'ulaakwd7dj2iw1lr',
-    password: 'BOu0vZSu6u6ZZPbvIe1d',
-    database: 'bsxtznqkqju8owmb791r',
+    host: 'sql12.freemysqlhosting.net',
+    user: 'sql12747617',
+    password: 'fIPYqIUP1s',
+    database: 'sql12747617',  // Ensure the correct database name is provided
     port: '3306'
 });
 

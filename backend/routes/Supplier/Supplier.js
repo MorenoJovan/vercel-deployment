@@ -4,10 +4,10 @@ const mysql = require('mysql2/promise');
 
 // MySQL connection
 const db = mysql.createPool({
-    host: 'bsxtznqkqju8owmb791r-mysql.services.clever-cloud.com',
-    user: 'ulaakwd7dj2iw1lr',
-    password: 'BOu0vZSu6u6ZZPbvIe1d',
-    database: 'bsxtznqkqju8owmb791r',
+    host: 'sql12.freemysqlhosting.net',
+    user: 'sql12747617',
+    password: 'fIPYqIUP1s',
+    database: 'sql12747617',  // Ensure the correct database name is provided
     port: '3306'
 });
 
@@ -17,7 +17,7 @@ router.post('/suppliers', async (req, res) => {
 
     try {
         const [result] = await db.query(
-            'INSERT INTO Supplier (SupplierFirstName, SupplierLastName, Address, City, PhoneNumber) VALUES (?, ?, ?, ?, ?)',
+            'INSERT INTO supplier (SupplierFirstName, SupplierLastName, Address, City, PhoneNumber) VALUES (?, ?, ?, ?, ?)',
             [firstName, lastName, address, city, phoneNumber]
         );
 
@@ -31,7 +31,7 @@ router.post('/suppliers', async (req, res) => {
 // GET endpoint to fetch all suppliers
 router.get('/suppliers', async (req, res) => {
     try {
-        const [rows] = await db.query('SELECT * FROM Supplier'); // Get all suppliers from the database
+        const [rows] = await db.query('SELECT * FROM supplier'); // Get all suppliers from the database
         res.status(200).json(rows); // Send the rows back as a response
     } catch (error) {
         console.error('Error fetching suppliers:', error);
